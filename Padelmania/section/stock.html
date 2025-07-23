@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <script src="/js/header.js"></script>
+    
+    <!--Productos-->
+    <div class="contenedor">
+        <h1 class="Stock">Stock de Productos</h1>
+        <table class="tabla" id="tablaProducto">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Categoría</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="filas" id="contenidoTabla"></tbody>
+        </table>
+    </div>
+
+    <div class="contenedorAbm">
+        <section class="AgregarContenedor">
+            <h2>Agregar Producto</h2>
+            <select id="selectCategoriaProducto">
+                <option value="">Seleccionar categoría</option>
+            </select>
+            <input type="text" id="agregarMarca" placeholder="Marca del producto">
+            <input type="text" id="agregarModelo" placeholder="Modelo del Producto">
+            <input type="text" id="agregarPrecio" placeholder="Agregar Precio">
+            <button class="botonAbm" onclick="CrearProducto()">Agregar Producto</button>
+        </section>
+
+        <section class="ModificarContenedor">
+            <h2>Modificar Producto</h2>
+            <input type="text" id="modificarId" placeholder="Id" readonly>
+            <select id="selectModificarCategoria">
+                <option value="">Seleccionar categoría</option>
+            </select>
+            <input type="text" id="modificarMarca" placeholder="Marca del Producto">
+            <input type="text" id="modificarModelo" placeholder="Modelo del Producto">
+            <input type="text" id="modificarPrecio" placeholder="Agregar Precio">
+            <button class="botonAbm" onclick="ModificarProducto()">Modificar Producto</button>
+        </section>
+    </div>
+
+    <hr>
+
+    <!--Categorías-->
+    <div class="contenedor">
+        <h1>Categorías</h1>
+        <table class="tablaCategorias" id="tablaCategorias">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="filas" id="contenidoTablaCategorias"></tbody>
+        </table>
+    </div>
+
+    <div class="contenedorAbm">
+        <section class="contenedorAgregarCategoria">
+            <h2>Agregar Categoría</h2>
+            <input type="text" id="agregarParam1" placeholder="Nombre de Categoría">
+            <button class="botonAbm" onclick="CrearCategoria()">Agregar Categoría</button>
+        </section>
+
+        <section class="ModificarContenedor">
+            <h2>Modificar Categoría</h2>
+            <input type="text" id="modificarIdCategoria" placeholder="Id" readonly>
+            <input type="text" id="modificarParam1" placeholder="Nombre Categoría">
+            <button class="botonAbm" onclick="ModificarCategoria()">Modificar Categoría</button>
+        </section>
+    </div>
+
+    <script src="/js/footer.js"></script>
+    <script src="/js/script.js" ></script>
+    <script>
+    CargarCategorias(); // Esto no afecta
+    CargarCategoriasEnSelect().then(() => {
+        CargarProductos(); // Se ejecuta solo después de que categoriasMap esté listo
+    });
+</script>
+</body>
+</html>
